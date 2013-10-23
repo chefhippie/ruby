@@ -18,6 +18,6 @@
 #
 
 default["ruby"]["packages"] = %w(
-  ruby20
-  ruby20-devel
+  ruby
+  ruby-devel
 )
