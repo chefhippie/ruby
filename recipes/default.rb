@@ -17,16 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "zypper"
-
-zypper_repository "ruby" do
-  uri "http://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_12.3/"
-  key "http://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_12.3/repodata/repomd.xml.key"
-  title "Ruby base project"
-
-  action :add
-end
-
 node["ruby"]["packages"].each do |name|
   package name do
     action :install
