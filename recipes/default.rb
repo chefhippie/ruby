@@ -17,6 +17,16 @@
 # limitations under the License.
 #
 
+include_recipe "zypper"
+
+zypper_repository "ruby-extensions" do
+  uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/"
+  key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/repodata/repomd.xml.key"
+  title "Ruby Extensions"
+
+  action :add
+end
+
 node["ruby"]["packages"].each do |name|
   package name do
     action :install
