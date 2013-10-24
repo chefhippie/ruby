@@ -20,8 +20,8 @@
 include_recipe "zypper"
 
 zypper_repository "ruby-extensions" do
-  uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/"
-  key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/repodata/repomd.xml.key"
+  uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/"
+  key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/repodata/repomd.xml.key"
   title "Ruby Extensions"
 
   action :add
