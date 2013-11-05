@@ -18,6 +18,8 @@
 #
 
 default["ruby"]["packages"] = %w(
+  libxml2-devel
+  libxslt-devel
   ruby
   ruby-devel
 )
