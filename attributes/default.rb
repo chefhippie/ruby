@@ -17,9 +17,28 @@
 # limitations under the License.
 #
 
-default["ruby"]["packages"] = %w(
-  libxml2-devel
-  libxslt-devel
-  ruby
-  ruby-devel
-)
+case node["platform_family"]
+when "debian"
+  default["ruby"]["packages"] = %w(
+    libxml2-dev
+    libxslt-dev
+    ruby
+    ruby-dev
+    rubygems
+  )
+when "ubuntu"
+  default["ruby"]["packages"] = %w(
+    libxml2-dev
+    libxslt-dev
+    ruby
+    ruby-dev
+    rubygems
+  )
+when "suse"
+  default["ruby"]["packages"] = %w(
+    libxml2-devel
+    libxslt-devel
+    ruby
+    ruby-devel
+  )
+end

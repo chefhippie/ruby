@@ -17,14 +17,17 @@
 # limitations under the License.
 #
 
-include_recipe "zypper"
+case node["platform_family"]
+when "suse"
+  include_recipe "zypper"
 
-zypper_repository "ruby-extensions" do
-  uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/"
-  key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/repodata/repomd.xml.key"
-  title "Ruby Extensions"
+  zypper_repository "ruby-extensions" do
+    uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/"
+    key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/repodata/repomd.xml.key"
+    title "Ruby Extensions"
 
-  action :add
+    action :add
+  end
 end
 
 node["ruby"]["packages"].each do |name|

@@ -8,4 +8,6 @@ version "0.0.1"
 depends "zypper"
 recipe "ruby", "Installs/Configures ruby"
 
-supports "suse"
+supports "suse", ">= 12.3"
+supports "debian", ">= 7.0"
+supports "ubuntu", ">= 12.04"
