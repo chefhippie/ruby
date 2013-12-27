@@ -21,10 +21,10 @@ case node["platform_family"]
 when "suse"
   include_recipe "zypper"
 
-  zypper_repository "ruby-extensions" do
-    uri "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/"
-    key "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_12.3/repodata/repomd.xml.key"
-    title "Ruby Extensions"
+  zypper_repository node["ruby"]["zypper"]["alias"] do
+    uri node["ruby"]["zypper"]["repo"]
+    key node["ruby"]["zypper"]["key"]
+    title node["ruby"]["zypper"]["title"]
 
     action :add
   end
