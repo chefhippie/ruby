@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: ruby
-# Attributes:: default
+# Recipe:: package
 #
 # Copyright 2013, Thomas Boerger
 #
@@ -17,10 +17,21 @@
 # limitations under the License.
 #
 
-default["ruby"]["method"] = "package"
+case node["platform_family"]
+when "suse"
+  include_recipe "zypper"
 
-default["ruby"]["zypper"]["alias"] = "ruby-extensions"
-default["ruby"]["zypper"]["title"] = "Ruby Extensions"
-default["ruby"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_#{node["platform_version"] == "12.1" ? "12.3" : node["platform_version"]}/"
-default["ruby"]["zypper"]["key"] = "#{node["ruby"]["zypper"]["repo"]}repodata/repomd.xml.key"
+  zypper_repository node["ruby"]["zypper"]["alias"] do
+    uri node["ruby"]["zypper"]["repo"]
+    key node["ruby"]["zypper"]["key"]
+    title node["ruby"]["zypper"]["title"]
 
+    action :add
+  end
+end
+
+node["ruby"]["package"]["packages"].each do |name|
+  package name do
+    action :install
+  end
+end

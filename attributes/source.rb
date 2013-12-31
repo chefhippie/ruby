@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: ruby
-# Attributes:: default
+# Attributes:: source
 #
 # Copyright 2013, Thomas Boerger
 #
@@ -17,10 +17,20 @@
 # limitations under the License.
 #
 
-default["ruby"]["method"] = "package"
+default["ruby"]["source"]["packages"] = value_for_platform_family(
+  "debian" => %w(
+    libxml2-dev
+    libxslt-dev
+  ),
+  "ubuntu" => %w(
+    libxml2-dev
+    libxslt-dev
+  )
+)
 
-default["ruby"]["zypper"]["alias"] = "ruby-extensions"
-default["ruby"]["zypper"]["title"] = "Ruby Extensions"
-default["ruby"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_#{node["platform_version"] == "12.1" ? "12.3" : node["platform_version"]}/"
-default["ruby"]["zypper"]["key"] = "#{node["ruby"]["zypper"]["repo"]}repodata/repomd.xml.key"
-
+default["ruby"]["source"]["file_name"] = "ruby-install-0.3.4.tar.gz"
+default["ruby"]["source"]["file_download"] = "https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz"
+default["ruby"]["source"]["directory"] = "ruby-install-0.3.4"
+default["ruby"]["source"]["prefix"] = "/usr/local"
+default["ruby"]["source"]["type"] = "ruby"
+default["ruby"]["source"]["version"] = "2.0.0-p353"

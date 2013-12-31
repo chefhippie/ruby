@@ -17,21 +17,13 @@
 # limitations under the License.
 #
 
-case node["platform_family"]
-when "suse"
-  include_recipe "zypper"
-
-  zypper_repository node["ruby"]["zypper"]["alias"] do
-    uri node["ruby"]["zypper"]["repo"]
-    key node["ruby"]["zypper"]["key"]
-    title node["ruby"]["zypper"]["title"]
-
-    action :add
-  end
-end
-
-node["ruby"]["packages"].each do |name|
-  package name do
-    action :install
+case node["ruby"]["method"]
+when "package"
+  include_recipe "ruby::package"
+when "source"
+  include_recipe "ruby::source"
+else
+  log "Unknown install method for ruby" do
+    level :fatal    
   end
 end
