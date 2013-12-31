@@ -45,7 +45,7 @@ end
 
 bash "ruby_compile" do
   code <<-EOH
-    echo #{::File.join(node["ruby"]["source"]["prefix"], "bin", "ruby-install")} --no-reinstall -i #{node["ruby"]["source"]["prefix"]} #{node["ruby"]["source"]["type"]} #{node["ruby"]["source"]["version"]}
+    #{::File.join(node["ruby"]["source"]["prefix"], "bin", "ruby-install")} --no-reinstall -i #{node["ruby"]["source"]["prefix"]} #{node["ruby"]["source"]["type"]} #{node["ruby"]["source"]["version"]}
   EOH
 
   cwd Chef::Config[:file_cache_path]
