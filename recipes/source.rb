@@ -23,6 +23,12 @@ node["ruby"]["source"]["packages"].each do |name|
   end
 end
 
+node["ruby"]["source"]["gems"].each do |name|
+  gem_package name do
+    action :install
+  end
+end
+
 remote_file ::File.join(Chef::Config[:file_cache_path], node["ruby"]["source"]["file_name"]) do
   source node["ruby"]["source"]["file_download"]
   action :create_if_missing

@@ -37,5 +37,18 @@ default["ruby"]["package"]["packages"] = value_for_platform_family(
     libxslt-devel
     ruby
     ruby-devel
+    rubygem-bundler
+  )
+)
+
+default["ruby"]["package"]["gems"] = value_for_platform_family(
+  "debian" => %w(
+    bundler
+  ),
+  "ubuntu" => %w(
+    bundler
+  ),
+  "suse" => %w(
+
   )
 )

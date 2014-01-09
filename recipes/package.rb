@@ -35,3 +35,9 @@ node["ruby"]["package"]["packages"].each do |name|
     action :install
   end
 end
+
+node["ruby"]["package"]["gems"].each do |name|
+  gem_package name do
+    action :install
+  end
+end
