@@ -25,15 +25,22 @@ default["ruby"]["source"]["packages"] = value_for_platform_family(
   "ubuntu" => %w(
     libxml2-dev
     libxslt-dev
+  ),
+  "suse" => %w(
+    libxml2-devel
+    libxslt-devel
   )
 )
 
 default["ruby"]["source"]["gems"] = value_for_platform_family(
   "debian" => %w(
-    bundler
+
   ),
   "ubuntu" => %w(
-    bundler
+
+  ),
+  "suse" => %w(
+
   )
 )
 
