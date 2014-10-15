@@ -19,8 +19,8 @@
 
 default["ruby"]["method"] = "package"
 
+default["ruby"]["zypper"]["enabled"] = true
 default["ruby"]["zypper"]["alias"] = "ruby-extensions"
 default["ruby"]["zypper"]["title"] = "Ruby Extensions"
 default["ruby"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_#{node["platform_version"]}/"
 default["ruby"]["zypper"]["key"] = "#{node["ruby"]["zypper"]["repo"]}repodata/repomd.xml.key"
-
