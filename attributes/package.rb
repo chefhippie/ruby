@@ -25,13 +25,6 @@ default["ruby"]["package"]["packages"] = value_for_platform_family(
     ruby-dev
     rubygems
   ),
-  "ubuntu" => %w(
-    libxml2-dev
-    libxslt-dev
-    ruby
-    ruby-dev
-    rubygems
-  ),
   "suse" => %w(
     libxml2-devel
     libxslt-devel
@@ -42,9 +35,6 @@ default["ruby"]["package"]["packages"] = value_for_platform_family(
 
 default["ruby"]["package"]["gems"] = value_for_platform_family(
   "debian" => %w(
-
-  ),
-  "ubuntu" => %w(
 
   ),
   "suse" => %w(

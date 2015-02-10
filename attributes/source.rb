@@ -22,10 +22,6 @@ default["ruby"]["source"]["packages"] = value_for_platform_family(
     libxml2-dev
     libxslt-dev
   ),
-  "ubuntu" => %w(
-    libxml2-dev
-    libxslt-dev
-  ),
   "suse" => %w(
     libxml2-devel
     libxslt-devel
@@ -36,17 +32,14 @@ default["ruby"]["source"]["gems"] = value_for_platform_family(
   "debian" => %w(
 
   ),
-  "ubuntu" => %w(
-
-  ),
   "suse" => %w(
 
   )
 )
 
-default["ruby"]["source"]["file_name"] = "ruby-install-0.4.3.tar.gz"
-default["ruby"]["source"]["file_download"] = "https://github.com/postmodern/ruby-install/archive/v0.4.3.tar.gz"
-default["ruby"]["source"]["directory"] = "ruby-install-0.4.3"
+default["ruby"]["source"]["file_name"] = "ruby-install-0.5.0.tar.gz"
+default["ruby"]["source"]["file_download"] = "https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz"
+default["ruby"]["source"]["directory"] = "ruby-install-0.5.0"
 default["ruby"]["source"]["prefix"] = "/usr/local"
 default["ruby"]["source"]["type"] = "ruby"
 default["ruby"]["source"]["version"] = "stable"
