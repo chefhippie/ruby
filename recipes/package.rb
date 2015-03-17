@@ -26,7 +26,7 @@ when "suse"
     key node["ruby"]["zypper"]["key"]
     title node["ruby"]["zypper"]["title"]
 
-    action :add
+    action [:add, :refresh]
 
     only_if do
       node["ruby"]["zypper"]["enabled"]
