@@ -19,8 +19,22 @@
 
 default["ruby"]["method"] = "package"
 
-default["ruby"]["zypper"]["enabled"] = true
-default["ruby"]["zypper"]["alias"] = "ruby-extensions"
-default["ruby"]["zypper"]["title"] = "Ruby Extensions"
-default["ruby"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_#{node["platform_version"].to_i.to_s == node["platform_version"] ? "Tumbleweed" : node["platform_version"]}/"
-default["ruby"]["zypper"]["key"] = "#{node["ruby"]["zypper"]["repo"]}repodata/repomd.xml.key"
+case node["platform_family"]
+when "suse"
+  repo = case node["platform_version"]
+  when /\A13\.\d+\z/
+    "openSUSE_#{node["platform_version"]}"
+  when /\A42\.\d+\z/
+    "openSUSE_Leap_#{node["platform_version"]}"
+  when /\A\d{8}\z/
+    "openSUSE_Tumbleweed"
+  else
+    raise "Unsupported SUSE version"
+  end
+
+  default["ruby"]["zypper"]["enabled"] = true
+  default["ruby"]["zypper"]["alias"] = "ruby-extensions"
+  default["ruby"]["zypper"]["title"] = "Ruby Extensions"
+  default["ruby"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/#{repo}/"
+  default["ruby"]["zypper"]["key"] = "#{node["ruby"]["zypper"]["repo"]}repodata/repomd.xml.key"
+end
